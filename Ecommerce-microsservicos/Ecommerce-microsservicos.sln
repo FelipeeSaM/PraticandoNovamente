@@ -7,7 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serviços", "Serviços", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalogo", "Catalogo", "{8B471BAE-F750-4450-88C7-9144B2D142D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalogo.API", "Serviços\Catalogo\Catalogo.API\Catalogo.API.csproj", "{FBF20063-AB02-4D1A-A2DA-EECDA0385B9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalogo.API", "Serviços\Catalogo\Catalogo.API\Catalogo.API.csproj", "{FBF20063-AB02-4D1A-A2DA-EECDA0385B9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blocos", "Blocos", "{64C17322-BAD3-4BE7-A718-D5DFC1CBE38F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocos", "Blocos\Blocos\Blocos.csproj", "{31ABDD19-CEB2-4A80-95E3-E5FF1CBA6E8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +23,10 @@ Global
 		{FBF20063-AB02-4D1A-A2DA-EECDA0385B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBF20063-AB02-4D1A-A2DA-EECDA0385B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBF20063-AB02-4D1A-A2DA-EECDA0385B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31ABDD19-CEB2-4A80-95E3-E5FF1CBA6E8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31ABDD19-CEB2-4A80-95E3-E5FF1CBA6E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31ABDD19-CEB2-4A80-95E3-E5FF1CBA6E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31ABDD19-CEB2-4A80-95E3-E5FF1CBA6E8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -26,6 +34,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8B471BAE-F750-4450-88C7-9144B2D142D9} = {9864B4A9-F187-4FB8-84C8-A54B7F0C20CE}
 		{FBF20063-AB02-4D1A-A2DA-EECDA0385B9C} = {8B471BAE-F750-4450-88C7-9144B2D142D9}
+		{31ABDD19-CEB2-4A80-95E3-E5FF1CBA6E8E} = {64C17322-BAD3-4BE7-A718-D5DFC1CBE38F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9732D56D-7A82-4C49-BDB8-1321C233F28C}

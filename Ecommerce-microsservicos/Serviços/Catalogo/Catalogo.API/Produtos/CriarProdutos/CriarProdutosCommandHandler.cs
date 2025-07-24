@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Blocos.CQRS;
+using Catalogo.API.Modelos;
 
 namespace Catalogo.API.Produtos.CriarProdutos
 {
@@ -9,17 +10,25 @@ namespace Catalogo.API.Produtos.CriarProdutos
         string descricao, 
         string arquivoImagem,
         decimal preco
-        ) : IRequest<CriarProdutosResult>;
+        ) : ICommand<CriarProdutosResult>;
 
     public record CriarProdutosResult(
         Guid id
         );
 
-    internal class CriarProdutosCommandHandler : IRequestHandler<CriarProdutosCommand, CriarProdutosResult>
+    internal class CriarProdutosCommandHandler : ICommandHandler<CriarProdutosCommand, CriarProdutosResult>
     {
-        public Task<CriarProdutosResult> Handle(CriarProdutosCommand request, CancellationToken cancellationToken)
+        public async Task<CriarProdutosResult> Handle(CriarProdutosCommand commnad, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var produto = new Produto {
+                Nome = commnad.nome,
+                Categorias = commnad.categorias,
+                Descricao = commnad.descricao,
+                ArquivoImagem = commnad.arquivoImagem,
+                Preco = commnad.preco
+            };
+
+            return new CriarProdutosResult(Guid.NewGuid());
         }
     }
 }

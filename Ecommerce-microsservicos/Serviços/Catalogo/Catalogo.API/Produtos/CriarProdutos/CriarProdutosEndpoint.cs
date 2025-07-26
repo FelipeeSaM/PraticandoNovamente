@@ -1,10 +1,10 @@
 ﻿namespace Catalogo.API.Produtos.CriarProdutos
 {
-    public record CriarProdutosRequest(string nome,
-        List<string> categorias,
-        string descricao,
-        string arquivoImagem,
-        decimal preco);
+    public record CriarProdutosRequest(string Nome,
+        List<string> Categorias,
+        string Descricao,
+        string ArquivoImagem,
+        decimal Preco);
 
     public record CriarProdutosResponse(Guid id);
     public class CriarProdutosEndpoint : ICarterModule

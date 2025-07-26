@@ -5,15 +5,15 @@ namespace Catalogo.API.Produtos.CriarProdutos
 {
 
     public record CriarProdutosCommand(
-        string nome,
-        List<string> categorias, 
-        string descricao, 
-        string arquivoImagem,
-        decimal preco
+        string Nome,
+        List<string> Categorias, 
+        string Descricao, 
+        string ArquivoImagem,
+        decimal Preco
         ) : ICommand<CriarProdutosResult>;
 
     public record CriarProdutosResult(
-        Guid id
+        Guid Id
         );
 
     internal class CriarProdutosCommandHandler : ICommandHandler<CriarProdutosCommand, CriarProdutosResult>
@@ -21,11 +21,11 @@ namespace Catalogo.API.Produtos.CriarProdutos
         public async Task<CriarProdutosResult> Handle(CriarProdutosCommand commnad, CancellationToken cancellationToken)
         {
             var produto = new Produto {
-                Nome = commnad.nome,
-                Categorias = commnad.categorias,
-                Descricao = commnad.descricao,
-                ArquivoImagem = commnad.arquivoImagem,
-                Preco = commnad.preco
+                Nome = commnad.Nome,
+                Categorias = commnad.Categorias,
+                Descricao = commnad.Descricao,
+                ArquivoImagem = commnad.ArquivoImagem,
+                Preco = commnad.Preco
             };
 
             return new CriarProdutosResult(Guid.NewGuid());

@@ -1,7 +1,4 @@
-﻿using Blocos.CQRS;
-using Catalogo.API.Modelos;
-
-namespace Catalogo.API.Produtos.CriarProdutos
+﻿namespace Catalogo.API.Produtos.CriarProdutos
 {
 
     public record CriarProdutosCommand(
@@ -16,7 +13,7 @@ namespace Catalogo.API.Produtos.CriarProdutos
         Guid Id
         );
 
-    internal class CriarProdutosCommandHandler : ICommandHandler<CriarProdutosCommand, CriarProdutosResult>
+    internal class CriarProdutosCommandHandler(IDocumentSession sessão) : ICommandHandler<CriarProdutosCommand, CriarProdutosResult>
     {
         public async Task<CriarProdutosResult> Handle(CriarProdutosCommand commnad, CancellationToken cancellationToken)
         {
@@ -28,7 +25,10 @@ namespace Catalogo.API.Produtos.CriarProdutos
                 Preco = commnad.Preco
             };
 
-            return new CriarProdutosResult(Guid.NewGuid());
+            sessão.Store(produto);
+            await sessão.SaveChangesAsync(cancellationToken);
+
+            return new CriarProdutosResult(produto.Id);
         }
     }
 }

@@ -4,6 +4,7 @@ global using MediatR;
 global using Blocos.CQRS;
 global using Catalogo.API.Modelos;
 global using Marten;
+global using Catalogo.API.Exceptions;
 
 namespace Catalogo.API
 {

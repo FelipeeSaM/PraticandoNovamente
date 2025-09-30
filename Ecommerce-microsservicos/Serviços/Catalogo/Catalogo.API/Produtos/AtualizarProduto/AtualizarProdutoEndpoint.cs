@@ -1,6 +1,4 @@
 ﻿
-using Catalogo.API.Produtos.BuscarProdutoPorCategoria;
-
 namespace Catalogo.API.Produtos.AtualizarProduto
 {
     public record AtualizarProdutoRequest(Guid Id,
@@ -16,7 +14,7 @@ namespace Catalogo.API.Produtos.AtualizarProduto
         public void AddRoutes(IEndpointRouteBuilder app)
         {
             app.MapPut("/produtos", async (AtualizarProdutoRequest request, ISender sender) => {
-                var comando = request.Adapt<AtualizarProdutoCommandHandler>();
+                var comando = request.Adapt<AtualizarProdutoComando>();
                 var result = sender.Send(comando);
                 var resposta = result.Adapt<AtualizarProdutoResponse>();
 

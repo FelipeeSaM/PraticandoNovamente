@@ -15,7 +15,7 @@ namespace Catalogo.API.Produtos.AtualizarProduto
         {
             app.MapPut("/produtos", async (AtualizarProdutoRequest request, ISender sender) => {
                 var comando = request.Adapt<AtualizarProdutoComando>();
-                var result = sender.Send(comando);
+                var result = await sender.Send(comando);
                 var resposta = result.Adapt<AtualizarProdutoResponse>();
 
                 return Results.Ok(resposta);

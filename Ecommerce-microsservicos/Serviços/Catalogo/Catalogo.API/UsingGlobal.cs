@@ -5,6 +5,7 @@ global using Blocos.CQRS;
 global using Catalogo.API.Modelos;
 global using Marten;
 global using Catalogo.API.Exceptions;
+global using FluentValidation;
 
 namespace Catalogo.API
 {

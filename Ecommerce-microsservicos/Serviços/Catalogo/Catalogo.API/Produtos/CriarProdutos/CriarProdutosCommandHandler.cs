@@ -13,10 +13,15 @@
         Guid Id
         );
 
-    internal class CriarProdutosCommandHandler(IDocumentSession sessão) : ICommandHandler<CriarProdutosCommand, CriarProdutosResult>
+    internal class CriarProdutosCommandHandler(IDocumentSession sessão, IValidator<CriarProdutosCommand> validator) : ICommandHandler<CriarProdutosCommand, CriarProdutosResult>
     {
         public async Task<CriarProdutosResult> Handle(CriarProdutosCommand commnad, CancellationToken cancellationToken)
         {
+            var resultado = await validator.ValidateAsync(commnad, cancellationToken);
+            var erros = resultado.Errors.Select(x => x.ErrorMessage).ToList();
+            if(erros.Any())
+                throw new ValidationException(erros.FirstOrDefault());
+
             var produto = new Produto {
                 Nome = commnad.Nome,
                 Categorias = commnad.Categorias,
@@ -29,6 +34,17 @@
             await sessão.SaveChangesAsync(cancellationToken);
 
             return new CriarProdutosResult(produto.Id);
+        }
+    }
+
+    public class CriarProdutoCommandValidator : AbstractValidator<CriarProdutosCommand>
+    {
+        public CriarProdutoCommandValidator()
+        {
+            RuleFor(x => x.Nome).NotEmpty().WithMessage("Nome inválido");
+            RuleFor(x => x.Categorias).NotEmpty().WithMessage("Categoria inválida");
+            RuleFor(x => x.ArquivoImagem).NotEmpty().WithMessage("Arquivo inválido");
+            RuleFor(x => x.Preco).GreaterThan(0).WithMessage("Preço precisa ser maior que 0");
         }
     }
 }

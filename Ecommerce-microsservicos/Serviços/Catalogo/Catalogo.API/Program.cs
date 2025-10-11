@@ -1,3 +1,4 @@
+using FluentValidation;
 var builder = WebApplication.CreateBuilder(args);
 
 // Adiciona serviços ao container
@@ -5,6 +6,8 @@ builder.Services.AddCarter(new DependencyContextAssemblyCatalog([typeof(Program)
 builder.Services.AddMediatR(config => {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
 });
+
+builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
 builder.Services.AddMarten(opt => {
     opt.Connection(builder.Configuration.GetConnectionString("Database")!);

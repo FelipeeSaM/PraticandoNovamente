@@ -1,3 +1,4 @@
+using Blocos.Comportamentos;
 using FluentValidation;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -5,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCarter(new DependencyContextAssemblyCatalog([typeof(Program).Assembly]));
 builder.Services.AddMediatR(config => {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
+    config.AddOpenBehavior(typeof(Validacao<,>));
 });
 
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);

@@ -13,14 +13,11 @@
         Guid Id
         );
 
-    internal class CriarProdutosCommandHandler(IDocumentSession sessão, IValidator<CriarProdutosCommand> validator) : ICommandHandler<CriarProdutosCommand, CriarProdutosResult>
+    internal class CriarProdutosCommandHandler(IDocumentSession sessão, ILogger<CriarProdutosCommandHandler> logger) : ICommandHandler<CriarProdutosCommand, CriarProdutosResult>
     {
         public async Task<CriarProdutosResult> Handle(CriarProdutosCommand commnad, CancellationToken cancellationToken)
         {
-            var resultado = await validator.ValidateAsync(commnad, cancellationToken);
-            var erros = resultado.Errors.Select(x => x.ErrorMessage).ToList();
-            if(erros.Any())
-                throw new ValidationException(erros.FirstOrDefault());
+            logger.LogInformation("CriarProdutosCommandHandler.Handle: {@Command}", commnad);
 
             var produto = new Produto {
                 Nome = commnad.Nome,

@@ -22,4 +22,11 @@ namespace Catalogo.API.Produtos.DeletarProduto
             return new DeletarProdutoResult(true);
         }
     }
+
+    public class DeletarProdutoCommandValidator : AbstractValidator<DeletarProdutoCommand> {
+        public DeletarProdutoCommandValidator()
+        {
+            RuleFor(c => c.Id).NotNull().WithMessage("Id é necessário");
+        }
+    }
 }

@@ -38,4 +38,15 @@ namespace Catalogo.API.Produtos.AtualizarProduto
             return new AtualizarProdutoResult(true);
         }
     }
+
+    public class AtualizarProdutoComandoValidator : AbstractValidator<AtualizarProdutoComando>
+    {
+        public AtualizarProdutoComandoValidator()
+        {
+            RuleFor(c => c.Id).NotEmpty().WithMessage("Id necessário");
+            RuleFor(c => c.Nome).NotNull();
+            RuleFor(c => c.Categorias);
+            RuleFor(c => c.Preco).GreaterThanOrEqualTo(0);
+        }
+    }
 }

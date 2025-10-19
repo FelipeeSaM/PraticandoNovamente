@@ -1,4 +1,5 @@
 using Blocos.Comportamentos;
+using Catalogo.API.Extensoes;
 using FluentValidation;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,5 +21,7 @@ var app = builder.Build();
 
 // Configura o pipeline de requisições HTTP
 app.MapCarter();
+
+app.ExceptionHandlerPipeline();
 
 app.Run();

@@ -12,7 +12,7 @@
             var resultado = await session.LoadAsync<Produto>(request.Id, cancellationToken);
             if(resultado is null)
             {
-                throw new ProdutoNaoEncontradoException();
+                throw new ProdutoNaoEncontradoException(request.Id);
             }
 
             return new BuscarProdutoPorIdResult(resultado);

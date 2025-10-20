@@ -1,10 +1,11 @@
-﻿namespace Catalogo.API.Exceptions
+﻿using Blocos.Exceptions;
+
+namespace Catalogo.API.Exceptions
 {
-    public class ProdutoNaoEncontradoException : Exception
+    public class ProdutoNaoEncontradoException : NaoEncontradoExcecao
     {
-        public ProdutoNaoEncontradoException() : base("Produto não encontrado1")
+        public ProdutoNaoEncontradoException(Guid id) : base("Produto", id)
         {
-            
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Catalogo.API.Produtos.AtualizarProduto
 
             if(produto is null)
             {
-                throw new ProdutoNaoEncontradoException();
+                throw new ProdutoNaoEncontradoException(request.Id);
             }
 
             produto.Nome = request.Nome;

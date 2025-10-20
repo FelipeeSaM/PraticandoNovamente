@@ -13,7 +13,7 @@ namespace Catalogo.API.Produtos.DeletarProduto
 
             if(produto is null)
             {
-                throw new ProdutoNaoEncontradoException();
+                throw new ProdutoNaoEncontradoException(request.Id);
             }
 
             session.Delete(produto);

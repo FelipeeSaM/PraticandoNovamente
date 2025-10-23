@@ -50,7 +50,7 @@ namespace Blocos.Exceptions.Handler
                         )
                 };
 
-            var problemasDetalhes = new ProblemDetails {
+            var problemasDetalhes = new ProblemDetails { 
                 Title = detalhes.Titulo,
                 Detail = detalhes.Detalhe,
                 Status = detalhes.StatusCode

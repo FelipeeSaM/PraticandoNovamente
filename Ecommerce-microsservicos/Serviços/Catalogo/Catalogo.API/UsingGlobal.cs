@@ -6,6 +6,9 @@ global using Catalogo.API.Modelos;
 global using Marten;
 global using Catalogo.API.Exceptions;
 global using FluentValidation;
+global using Blocos.Comportamentos;
+global using Catalogo.API.Extensoes;
+global using Blocos.Exceptions.Handler;
 
 namespace Catalogo.API
 {

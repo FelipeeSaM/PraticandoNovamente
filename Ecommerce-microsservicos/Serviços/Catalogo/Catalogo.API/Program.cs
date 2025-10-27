@@ -5,6 +5,7 @@ builder.Services.AddCarter(new DependencyContextAssemblyCatalog([typeof(Program)
 builder.Services.AddMediatR(config => {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
     config.AddOpenBehavior(typeof(Validacao<,>));
+    config.AddOpenBehavior(typeof(Logging<,>));
 });
 
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);

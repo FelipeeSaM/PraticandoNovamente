@@ -3,12 +3,11 @@
     public record BuscarProdutoPorIdQuery(Guid Id) : IQuery<BuscarProdutoPorIdResult>;
     public record BuscarProdutoPorIdResult(Produto Produto);
 
-    public class BuscarProdutoPorIdQueryHandler(IDocumentSession session, ILogger<BuscarProdutoPorIdQueryHandler> logger)
+    public class BuscarProdutoPorIdQueryHandler(IDocumentSession session)
         : IQueryHandler<BuscarProdutoPorIdQuery, BuscarProdutoPorIdResult>
     {
         public async Task<BuscarProdutoPorIdResult> Handle(BuscarProdutoPorIdQuery request, CancellationToken cancellationToken)
         {
-            logger.LogInformation("BuscarProdutoPorIdQueryHandler.Handle chamado com a query {@request}", request);
             var resultado = await session.LoadAsync<Produto>(request.Id, cancellationToken);
             if(resultado is null)
             {

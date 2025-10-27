@@ -13,12 +13,11 @@
         Guid Id
         );
 
-    internal class CriarProdutosCommandHandler(IDocumentSession sessão, ILogger<CriarProdutosCommandHandler> logger) : ICommandHandler<CriarProdutosCommand, CriarProdutosResult>
+    internal class CriarProdutosCommandHandler(IDocumentSession sessão) 
+        : ICommandHandler<CriarProdutosCommand, CriarProdutosResult>
     {
         public async Task<CriarProdutosResult> Handle(CriarProdutosCommand commnad, CancellationToken cancellationToken)
         {
-            logger.LogInformation("CriarProdutosCommandHandler.Handle: {@Command}", commnad);
-
             var produto = new Produto {
                 Nome = commnad.Nome,
                 Categorias = commnad.Categorias,

@@ -12,13 +12,11 @@ namespace Catalogo.API.Produtos.AtualizarProduto
 
     public record AtualizarProdutoResult(bool Sucesso);
 
-    internal class AtualizarProdutoCommandHandler(IDocumentSession session, ILogger<AtualizarProdutoCommandHandler> logger)
+    internal class AtualizarProdutoCommandHandler(IDocumentSession session)
         : ICommandHandler<AtualizarProdutoComando, AtualizarProdutoResult>
     {
         public async Task<AtualizarProdutoResult> Handle(AtualizarProdutoComando request, CancellationToken cancellationToken)
         {
-            logger.LogInformation("AtualizarProdutoCommandHandler.Handle chamado com {@Query}", request);
-
             var produto = await session.LoadAsync<Produto>(request.Id, cancellationToken);
 
             if(produto is null)

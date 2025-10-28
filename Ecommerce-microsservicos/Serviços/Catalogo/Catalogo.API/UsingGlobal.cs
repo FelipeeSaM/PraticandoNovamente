@@ -9,6 +9,8 @@ global using FluentValidation;
 global using Blocos.Comportamentos;
 global using Catalogo.API.Extensoes;
 global using Blocos.Exceptions.Handler;
+global using Catalogo.API.Data;
+global using Marten.Pagination;
 
 namespace Catalogo.API
 {

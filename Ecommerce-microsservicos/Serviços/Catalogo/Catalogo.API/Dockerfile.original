@@ -13,7 +13,6 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Serviços/Catalogo/Catalogo.API/Catalogo.API.csproj", "Serviços/Catalogo/Catalogo.API/"]
-COPY ["Blocos/Blocos/Blocos.csproj", "Blocos/Blocos/"]
 RUN dotnet restore "./Serviços/Catalogo/Catalogo.API/Catalogo.API.csproj"
 COPY . .
 WORKDIR "/src/Serviços/Catalogo/Catalogo.API"

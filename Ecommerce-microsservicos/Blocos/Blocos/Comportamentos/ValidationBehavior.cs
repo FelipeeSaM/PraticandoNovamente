@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Blocos.Comportamentos
 {
-    public class Validacao<TRequest, TResponse>
+    public class ValidationBehavior<TRequest, TResponse>
         (IEnumerable<IValidator<TRequest>> validadores)
         : IPipelineBehavior<TRequest, TResponse>
         where TRequest : ICommand<TResponse>

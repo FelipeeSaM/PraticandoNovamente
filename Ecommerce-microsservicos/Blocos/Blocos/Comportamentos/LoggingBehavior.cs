@@ -4,8 +4,8 @@ using System.Diagnostics;
 
 namespace Blocos.Comportamentos
 {
-    public class Logging<TRequest, TResponse>
-        (ILogger<Logging<TRequest, TResponse>> logger)
+    public class LoggingBehavior<TRequest, TResponse>
+        (ILogger<LoggingBehavior<TRequest, TResponse>> logger)
         : IPipelineBehavior<TRequest, TResponse>
             where TRequest : notnull, IRequest<TResponse>
             where TResponse : notnull

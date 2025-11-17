@@ -37,7 +37,7 @@ namespace Blocos.Exceptions.Handler
                     context.Response.StatusCode = StatusCodes.Status400BadRequest
                         ),
 
-                    NaoEncontradoExcecao => (
+                    NotFoundException => (
                     exception.Message,
                     exception.GetType().Name,
                     context.Response.StatusCode = StatusCodes.Status404NotFound

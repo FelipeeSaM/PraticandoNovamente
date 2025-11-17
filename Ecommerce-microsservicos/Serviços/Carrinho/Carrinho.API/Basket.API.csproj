@@ -18,8 +18,4 @@
     <ProjectReference Include="..\..\..\Blocos\Blocos\Blocos.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
-  </ItemGroup>
-
 </Project>

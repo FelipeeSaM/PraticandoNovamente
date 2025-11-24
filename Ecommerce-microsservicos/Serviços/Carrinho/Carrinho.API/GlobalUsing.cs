@@ -8,3 +8,4 @@ global using Blocos.Comportamentos;
 global using Blocos.Exceptions;
 global using Basket.API.Exceptions;
 global using Marten;
+global using Marten.Schema;

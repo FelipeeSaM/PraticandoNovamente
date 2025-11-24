@@ -11,6 +11,10 @@ builder.Services.AddMediatR(config => {
 var app = builder.Build();
 // configurar o pipeline do http request
 
+builder.Services.AddMarten(opt => {
+    opt.Connection(builder.Configuration.GetConnectionString("Database")!);
+}).UseLightweightSessions();
+
 app.MapCarter();
 
 app.Run();

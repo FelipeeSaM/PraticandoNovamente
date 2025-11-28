@@ -1,3 +1,5 @@
+using Blocos.Exceptions.Handler;
+
 var builder = WebApplication.CreateBuilder(args);
 // implementar os serviços ao container
 
@@ -12,6 +14,7 @@ builder.Services.AddMarten(opt => {
     opt.Connection(builder.Configuration.GetConnectionString("Database")!);
 }).UseLightweightSessions();
 
+builder.Services.AddExceptionHandler<ExcecaoCustomHandler>();
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 
@@ -19,5 +22,6 @@ var app = builder.Build();
 // configurar o pipeline do http request
 
 app.MapCarter();
+app.UseExceptionHandler(opt => { });
 
 app.Run();

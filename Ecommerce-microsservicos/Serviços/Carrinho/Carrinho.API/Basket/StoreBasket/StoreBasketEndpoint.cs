@@ -20,6 +20,6 @@
                 .WithSummary("Store basket")
                 .WithDescription("Store basket for a user");
         }
-    {
+    
     }
 }

@@ -12,12 +12,13 @@ namespace Basket.API.Basket.DeleteBasket
         }
     }
 
-    public class DeleteBasketCommandHandler
+    public class DeleteBasketCommandHandler(IBasketRepository _basketRepository)
         : ICommandHandler<DeleteBasketCommand, DeleteBasketResult>
     {
-        public Task<DeleteBasketResult> Handle(DeleteBasketCommand request, CancellationToken cancellationToken)
+        public async Task<DeleteBasketResult> Handle(DeleteBasketCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            await _basketRepository.DeleteBasket(request.UserName, cancellationToken);
+            return new DeleteBasketResult(true);
         }
     }
 }

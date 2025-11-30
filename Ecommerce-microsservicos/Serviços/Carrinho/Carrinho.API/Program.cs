@@ -1,4 +1,6 @@
 using Blocos.Exceptions.Handler;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 // implementar os serviços ao container
@@ -17,11 +19,24 @@ builder.Services.AddMarten(opt => {
 builder.Services.AddExceptionHandler<ExcecaoCustomHandler>();
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+builder.Services.Decorate<IBasketRepository, CachedBasketRepository>();
+
+builder.Services.AddStackExchangeRedisCache(opt => {
+    opt.Configuration = builder.Configuration.GetConnectionString("Redis");
+});
+
+builder.Services.AddHealthChecks()
+    .AddNpgSql(builder.Configuration.GetConnectionString("Database")!)
+    .AddRedis(builder.Configuration.GetConnectionString("Redis")!);
 
 var app = builder.Build();
 // configurar o pipeline do http request
 
 app.MapCarter();
 app.UseExceptionHandler(opt => { });
+app.UseHealthChecks("/health",
+    new HealthCheckOptions {
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+    });
 
 app.Run();

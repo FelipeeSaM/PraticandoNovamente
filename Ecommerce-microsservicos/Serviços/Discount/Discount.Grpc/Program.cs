@@ -1,6 +1,4 @@
-using Discount.Grpc.Services;
-
-var builder = WebApplication.CreateBuilder(args);
+ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGrpcReflection();
 
 // Add services to the container.

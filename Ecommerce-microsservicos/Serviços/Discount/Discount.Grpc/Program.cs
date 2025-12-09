@@ -1,13 +1,21 @@
- var builder = WebApplication.CreateBuilder(args);
+using Discount.Grpc.Data;
+using Discount.Grpc.Services;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGrpcReflection();
 
 // Add services to the container.
 builder.Services.AddGrpc();
 
+builder.Services.AddDbContext<DiscountContext>(opt => {
+    opt.UseSqlite(builder.Configuration.GetConnectionString("Database"));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.MapGrpcService<GreeterService>();
+app.MapGrpcService<DiscountService>();
 if(app.Environment.IsDevelopment())
     app.MapGrpcReflectionService();
 

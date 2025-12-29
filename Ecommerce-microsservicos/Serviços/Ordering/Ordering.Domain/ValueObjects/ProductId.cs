@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace Ordering.Domain.ValueObjects
 {
-    public record CustomerId
+    public record ProductId
     {
         public Guid Value { get; }
-        private CustomerId(Guid value)
+        private ProductId(Guid value)
         {
             Value = value;
         }
 
-        public static CustomerId Of(Guid value)
+        public static ProductId Of(Guid value)
         {
             ArgumentNullException.ThrowIfNull(value);
             if(value == Guid.Empty)
             {
-                throw new DomainException("CustomerId value cannot be an empty GUID.");
+                throw new DomainException("ProductId value cannot be an empty GUID.");
             }
-            return new CustomerId(value);
+            return new ProductId(value);
         }
     }
 }

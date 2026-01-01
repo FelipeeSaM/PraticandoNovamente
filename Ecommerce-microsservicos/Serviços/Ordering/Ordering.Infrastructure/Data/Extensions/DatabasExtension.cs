@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ordering.Infrastructure.Data.Extensions
+﻿namespace Ordering.Infrastructure.Data.Extensions
 {
-    internal class DatabasExtension
+    public static class DatabasExtension
     {
+        public static async Task InitialDatabaseAsync(this WebApplication app)
+        {
+            using var scope = app.Services.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            dbContext.Database.MigrateAsync().GetAwaiter().GetResult();
+        }
     }
 }

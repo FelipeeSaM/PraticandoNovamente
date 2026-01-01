@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ordering.Infrastructure
-{
-    internal class GlobalUsings
-    {
-    }
-}
+﻿global using Microsoft.EntityFrameworkCore;
+global using Ordering.Domain.Models;
+global using System.Reflection;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Ordering.Domain.ValueObjects;

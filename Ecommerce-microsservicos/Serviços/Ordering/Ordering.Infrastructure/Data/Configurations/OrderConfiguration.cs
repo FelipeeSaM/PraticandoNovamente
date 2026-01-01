@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Ordering.Infrastructure.Data.Configurations
 {
-    internal class OrderConfiguration
+    public class OrderConfiguration : IEntityTypeConfiguration<Order>
     {
+        public void Configure(EntityTypeBuilder<Order> builder)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -23,14 +23,8 @@
             OrderName orderName,
             Address shippingAddress,
             Address billingAddress,
-            Payment payment,
-            List<OrderItem> orderItems)
+            Payment payment)
         {
-            ArgumentNullException.ThrowIfNull(orderItems);
-            if (!orderItems.Any())
-            {
-                throw new DomainException("Order must have at least one order item.");
-            }
             var order = new Order
             {
                 Id = orderId,

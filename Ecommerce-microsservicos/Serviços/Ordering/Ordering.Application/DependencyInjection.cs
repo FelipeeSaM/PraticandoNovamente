@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace Ordering.Application
 {
@@ -6,7 +7,10 @@ namespace Ordering.Application
     {
         public static IServiceCollection AddApiServices(this IServiceCollection services)
         {
-            // Register application services here
+            services.AddMediatR(cfg => {
+                cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            });
+
             return services;
         }
     }

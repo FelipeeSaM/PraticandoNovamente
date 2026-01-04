@@ -17,26 +17,23 @@
             private set { }
         }
 
-        public static Order Create(
-            OrderId orderId,
-            CustomerId customerId,
-            OrderName orderName,
-            Address shippingAddress,
-            Address billingAddress,
-            Payment payment)
+        public static Order Create(OrderId id, CustomerId customerId, OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment)
         {
-            var order = new Order
-            {
-                Id = orderId,
+            var order = new Order {
+                Id = id,
                 CustomerId = customerId,
                 OrderName = orderName,
                 ShippingAddress = shippingAddress,
                 BillingAddress = billingAddress,
-                Payment = payment
+                Payment = payment,
+                Status = OrderStatusEnum.Pending
             };
+
             order.AddDomainEvent(new OrderCreatedEvent(order));
+
             return order;
         }
+
 
         public void Update(OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment, OrderStatusEnum status)
         {

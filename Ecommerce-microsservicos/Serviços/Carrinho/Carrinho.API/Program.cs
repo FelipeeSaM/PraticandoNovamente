@@ -1,8 +1,3 @@
-using Blocos.Exceptions.Handler;
-using Discount.Grpc;
-using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-
 var builder = WebApplication.CreateBuilder(args);
 // implementar os serviços ao container
 
@@ -16,6 +11,8 @@ builder.Services.AddMediatR(config => {
 builder.Services.AddMarten(opt => {
     opt.Connection(builder.Configuration.GetConnectionString("Database")!);
 }).UseLightweightSessions();
+
+builder.Services.AddMessageBroker(builder.Configuration);
 
 builder.Services.AddExceptionHandler<ExcecaoCustomHandler>();
 

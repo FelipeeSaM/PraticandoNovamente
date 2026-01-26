@@ -13,3 +13,5 @@ global using Blocos.Comportamentos;
 global using Microsoft.Extensions.DependencyInjection;
 global using System.Reflection;
 global using Blocos.Pagination;
+global using MassTransit;
+global using Microsoft.FeatureManagement;
